@@ -254,11 +254,17 @@ final class Plugin {
 	 */
 	public function register_widgets( $widgets_manager ) {
 
-		require_once( __DIR__ . '/widgets/gd-socials.php' );
-		require_once( __DIR__ . '/widgets/gd-header-contact.php' );
+		require_once( __DIR__ . '/widgets/socials.php' );
+		require_once( __DIR__ . '/widgets/header-contact.php' );
+		require_once( __DIR__ . '/widgets/hero-heading.php' );
+		require_once( __DIR__ . '/widgets/services.php' );
+		require_once( __DIR__ . '/widgets/products.php' );
 
-		$widgets_manager->register( new \Go_Digital_Addon\GD_Socials() );
-		$widgets_manager->register( new \Go_Digital_Addon\GD_Header_Contact() );
+		$widgets_manager->register( new \Go_Digital_Addon\Socials() );
+		$widgets_manager->register( new \Go_Digital_Addon\Header_Contact() );
+		$widgets_manager->register( new \Go_Digital_Addon\Hero_Heading() );
+		$widgets_manager->register( new \Go_Digital_Addon\Services() );
+		$widgets_manager->register( new \Go_Digital_Addon\Products() );
 
 	}
 

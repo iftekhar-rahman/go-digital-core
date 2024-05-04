@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class GD_Header_Contact extends \Elementor\Widget_Base {
+class Socials extends \Elementor\Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -24,7 +24,7 @@ class GD_Header_Contact extends \Elementor\Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'GD Header Contact';
+		return 'Socials';
 	}
 
 	/**
@@ -37,7 +37,7 @@ class GD_Header_Contact extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'GD Header Contact', 'go-digital-addon' );
+		return esc_html__( 'Socials', 'go-digital-addon' );
 	}
 
 	/**
@@ -115,30 +115,20 @@ class GD_Header_Contact extends \Elementor\Widget_Base {
 		$repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
-			'gd_header_contact_icon',
+			'social_icon',
 			[
-				'label' => esc_html__( 'Header Contact Icon', 'go-digital-addon' ),
+				'label' => esc_html__( 'Social Icon', 'go-digital-addon' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
 				],
 			]
 		);
-
-		$repeater->add_control(
-			'gd_header_contact_text',
-			[
-				'label' => esc_html__( 'Header Contact Text', 'go-digital-addon' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Type your text here', 'kolegal-addon' ),
-				'label_block' => true,
-			]
-		);
 		
 		$repeater->add_control(
-			'gd_header_contact_link',
+			'social_link',
 			[
-				'label' => esc_html__( 'Header Contact Link', 'go-digital-addon' ),
+				'label' => esc_html__( 'Social Link', 'go-digital-addon' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -152,9 +142,9 @@ class GD_Header_Contact extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
-			'gd_header_contact',
+			'socials',
 			[
-				'label' => esc_html__( 'GN Social Icons', 'go-digital-addon' ),
+				'label' => esc_html__( 'Social Icons', 'go-digital-addon' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
@@ -187,13 +177,12 @@ class GD_Header_Contact extends \Elementor\Widget_Base {
 		$settings = $this->get_settings_for_display();
 	?>
 
-	<div class="gd-socials-wrap header-contact">
+	<div class="gd-socials-wrap">
 		<ul>
-			<?php foreach ($settings['gd_header_contact'] as $gd_contact) : ?>
+			<?php foreach ($settings['socials'] as $social) : ?>
 			<li>
-				<a href="<?php echo $gd_contact['gd_header_contact_link']['url']; ?>">
-					<img src="<?php echo $gd_contact['gd_header_contact_icon']['url']; ?>" alt="">
-                    <span class="header-contact"><?php echo $gd_contact['gd_header_contact_text']; ?></span>
+				<a target="_blank" href="<?php echo $social['social_link']['url']; ?>">
+					<img src="<?php echo $social['social_icon']['url']; ?>" alt="">
 				</a>
 			</li>
 			<?php endforeach; ?>
